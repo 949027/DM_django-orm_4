@@ -9,6 +9,7 @@ class Pokemon(models.Model):
     attack = models.IntegerField(null=True)
     protection = models.IntegerField(null=True)
     endurance = models.IntegerField(null=True)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.title
