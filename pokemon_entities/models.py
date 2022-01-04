@@ -2,9 +2,10 @@ from django.db import models
 
 
 class Pokemon(models.Model):
+    """Модель покемона"""
     title = models.CharField('Название (ru)', max_length=200)
     title_en = models.CharField('Название (en)', max_length=200, null=True)
-    title_jp = models.CharField('Название (jp)',max_length=200, null=True)
+    title_jp = models.CharField('Название (jp)', max_length=200, null=True)
     image = models.ImageField('Изображение', upload_to='images', null=True, blank=True)
     level = models.IntegerField('Уровень', null=True)
     health = models.IntegerField('Здоровье', null=True)
@@ -20,6 +21,7 @@ class Pokemon(models.Model):
 
 
 class PokemonEntity(models.Model):
+    """Появление покемона на карте"""
     appeared_at = models.DateTimeField('Появляется')
     disappeared_at = models.DateTimeField('Исчезает')
     lat = models.FloatField('Широта')
