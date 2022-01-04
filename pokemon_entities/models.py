@@ -12,6 +12,8 @@ class Pokemon(models.Model):
     protection = models.IntegerField(null=True)
     endurance = models.IntegerField(null=True)
     description = models.TextField(null=True)
+    previous_evolution = models.ForeignKey('self', related_name='previous', on_delete=models.PROTECT, null=True, blank=True)
+    next_evolution = models.ForeignKey('self', on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
         return self.title
