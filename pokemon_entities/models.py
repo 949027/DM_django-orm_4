@@ -13,8 +13,21 @@ class Pokemon(models.Model):
     protection = models.IntegerField('Защита', null=True, blank=True)
     endurance = models.IntegerField('Выносливость', null=True, blank=True)
     description = models.TextField('Описание', null=True, blank=True)
-    previous_evolution = models.ForeignKey('self', verbose_name='Из кого эволюционировал', related_name='previous', on_delete=models.PROTECT, null=True, blank=True)
-    next_evolution = models.ForeignKey('self', verbose_name='В кого эволюционирует',on_delete=models.PROTECT, null=True, blank=True)
+    previous_evolution = models.ForeignKey(
+        'self',
+        verbose_name='Из кого эволюционировал',
+        related_name='previous',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
+    next_evolution = models.ForeignKey(
+        'self',
+        verbose_name='В кого эволюционирует',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return self.title
@@ -26,4 +39,9 @@ class PokemonEntity(models.Model):
     disappeared_at = models.DateTimeField('Исчезает')
     lat = models.FloatField('Широта')
     lon = models.FloatField('Долгота')
-    pokemon = models.ForeignKey(Pokemon, verbose_name='Покемон', on_delete=models.PROTECT, null=True)
+    pokemon = models.ForeignKey(
+        Pokemon,
+        verbose_name='Покемон',
+        on_delete=models.PROTECT,
+        null=True,
+    )
