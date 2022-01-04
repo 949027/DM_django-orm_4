@@ -12,7 +12,7 @@ class Pokemon(models.Model):
     attack = models.IntegerField('Атака', null=True, blank=True)
     protection = models.IntegerField('Защита', null=True, blank=True)
     endurance = models.IntegerField('Выносливость', null=True, blank=True)
-    description = models.TextField('Описание', blank=True)
+    description = models.TextField('Описание', null=True, blank=True)
     previous_evolution = models.ForeignKey('self', verbose_name='Из кого эволюционировал', related_name='previous', on_delete=models.PROTECT, null=True, blank=True)
     next_evolution = models.ForeignKey('self', verbose_name='В кого эволюционирует',on_delete=models.PROTECT, null=True, blank=True)
 
