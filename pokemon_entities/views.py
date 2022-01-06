@@ -1,5 +1,5 @@
 import folium
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Pokemon, PokemonEntity
 
@@ -51,7 +51,7 @@ def show_all_pokemons(request):
 
 
 def show_pokemon(request, pokemon_id):
-    found_pokemon = Pokemon.objects.get(id=pokemon_id)
+    found_pokemon = get_object_or_404(Pokemon, id=pokemon_id)
     pokemon = {
         'pokemon_id': found_pokemon.id,
         'title_ru': found_pokemon.title,
